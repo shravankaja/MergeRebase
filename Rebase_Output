@@ -1,0 +1,703 @@
+
+Intel@Intel-PC MINGW64 ~ (master)
+$ cd Desktop/git/MergeRebse
+bash: cd: Desktop/git/MergeRebse: No such file or directory
+
+Intel@Intel-PC MINGW64 ~ (master)
+$ cd Desktop/git/MergeRebase
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 1/2)
+$ git rebase master
+fatal: It seems that there is already a rebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+        git rebase (--continue | --abort | --skip)
+If that is not the case, please
+        rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 1/2)
+$ git rebase --skip
+error: could not apply 08b6153...  Branch commit B2
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 08b6153... Branch commit B2
+Auto-merging hello.java
+CONFLICT (content): Merge conflict in hello.java
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git rebase --abort
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git log
+commit 08b6153f9b08e9d30699eb54632479d0de028561 (HEAD -> firtBranch, origin/firtBranch)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:41:37 2021 +0530
+
+     Branch commit B2
+
+commit 7e6bd962a17b80e079cad1c20aaef475c1d75649
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:41:12 2021 +0530
+
+     Branch commit B1
+
+commit aa5d8692c8c0d6a1e983dcbbfa8f301c02fcd139 (origin/master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:39:27 2021 +0530
+
+     master commit c2
+
+commit ccb87c9f9d0054debddda6fc8e6b790b1bcb4467
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:38:57 2021 +0530
+
+     master commit c1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ brew update-reset
+bash: brew: command not found
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git rebase --skip
+fatal: No rebase in progress?
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git rebase master
+error: could not apply 7e6bd96...  Branch commit B1
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 7e6bd96... Branch commit B1
+Auto-merging hello.java
+CONFLICT (content): Merge conflict in hello.java
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 1/2)
+$ ls
+hello.java
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 1/2)
+$ git add hello.java
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 1/2)
+$ git rebase -continue
+error: did you mean `--continue` (with two dashes)?
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 1/2)
+$ git rebase --continue
+[detached HEAD 745a249]  Branch commit B1
+ 1 file changed, 4 insertions(+)
+error: could not apply 08b6153...  Branch commit B2
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 08b6153... Branch commit B2
+Auto-merging hello.java
+CONFLICT (content): Merge conflict in hello.java
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git dd .
+git: 'dd' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git add .
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git checkout master
+error: Your local changes to the following files would be overwritten by checkout:
+        hello.java
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git add .
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git commit -m "Rebase to C3"
+[detached HEAD 8480465] Rebase to C3
+ 1 file changed, 4 insertions(+)
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git checkout master
+Warning: you are leaving 2 commits behind, not connected to
+any of your branches:
+
+  8480465 Rebase to C3
+  745a249  Branch commit B1
+
+If you want to keep them by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 8480465
+
+Switched to branch 'master'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git checkout master
+Already on 'master'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git rebase firstBranch
+fatal: It seems that there is already a rebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+        git rebase (--continue | --abort | --skip)
+If that is not the case, please
+        rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git rebase firstBranch --continue
+usage: git rebase [-i] [options] [--exec <cmd>] [--onto <newbase> | --keep-base] [<upstream> [<branch>]]
+   or: git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] --root [<branch>]
+   or: git rebase --continue | --abort | --skip | --edit-todo
+
+    --onto <revision>     rebase onto given branch instead of upstream
+    --keep-base           use the merge-base of upstream and branch as the current base
+    --no-verify           allow pre-rebase hook to run
+    -q, --quiet           be quiet. implies --no-stat
+    -v, --verbose         display a diffstat of what changed upstream
+    -n, --no-stat         do not show diffstat of what changed upstream
+    --signoff             add a Signed-off-by trailer to each commit
+    --committer-date-is-author-date
+                          make committer date match author date
+    --reset-author-date   ignore author date and use current date
+    -C <n>                passed to 'git apply'
+    --ignore-whitespace   ignore changes in whitespace
+    --whitespace <action>
+                          passed to 'git apply'
+    -f, --force-rebase    cherry-pick all commits, even if unchanged
+    --no-ff               cherry-pick all commits, even if unchanged
+    --continue            continue
+    --skip                skip current patch and continue
+    --abort               abort and check out the original branch
+    --quit                abort but keep HEAD where it is
+    --edit-todo           edit the todo list during an interactive rebase
+    --show-current-patch  show the patch file being applied or merged
+    --apply               use apply strategies to rebase
+    -m, --merge           use merging strategies to rebase
+    -i, --interactive     let the user edit the list of commits to rebase
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --empty <{drop,keep,ask}>
+                          how to handle commits that become empty
+    --autosquash          move commits that begin with squash!/fixup! under -i
+    -S, --gpg-sign[=<key-id>]
+                          GPG-sign commits
+    --autostash           automatically stash/stash pop before and after
+    -x, --exec <exec>     add exec lines after each commit of the editable list
+    -r, --rebase-merges[=<mode>]
+                          try to rebase merges instead of skipping them
+    --fork-point          use 'merge-base --fork-point' to refine upstream
+    -s, --strategy <strategy>
+                          use the given merge strategy
+    -X, --strategy-option <option>
+                          pass the argument through to the merge strategy
+    --root                rebase all reachable commits up to the root(s)
+    --reschedule-failed-exec
+                          automatically re-schedule any `exec` that fails
+    --reapply-cherry-picks
+                          apply all changes, even those already present upstream
+
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch|REBASE 2/2)
+$ git rebase  --continue
+Successfully rebased and updated refs/heads/firtBranch.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git log
+commit 6280b87f1dfee7d52a4f91b35a271fb5617d7f25 (HEAD -> firtBranch, master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:44:21 2021 +0530
+
+     master commit c3
+
+commit aa5d8692c8c0d6a1e983dcbbfa8f301c02fcd139 (origin/master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:39:27 2021 +0530
+
+     master commit c2
+
+commit ccb87c9f9d0054debddda6fc8e6b790b1bcb4467
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:38:57 2021 +0530
+
+     master commit c1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git branch
+* firtBranch
+  master
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git checkout master
+Switched to branch 'master'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ giit lg
+bash: giit: command not found
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git log
+commit 6280b87f1dfee7d52a4f91b35a271fb5617d7f25 (HEAD -> master, firtBranch)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:44:21 2021 +0530
+
+     master commit c3
+
+commit aa5d8692c8c0d6a1e983dcbbfa8f301c02fcd139 (origin/master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:39:27 2021 +0530
+
+     master commit c2
+
+commit ccb87c9f9d0054debddda6fc8e6b790b1bcb4467
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:38:57 2021 +0530
+
+     master commit c1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git rebase firstBranch
+fatal: invalid upstream 'firstBranch'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git rebase firtBranch
+Current branch master is up to date.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git rebase firtBranch
+Current branch master is up to date.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 252 bytes | 252.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/shravankaja/MergeRebase.git
+   aa5d869..6280b87  master -> master
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git checkout firtBranch
+Switched to branch 'firtBranch'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git push origin firstBranch
+error: src refspec firstBranch does not match any
+error: failed to push some refs to 'https://github.com/shravankaja/MergeRebase.git'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git push origin firtBranch
+To https://github.com/shravankaja/MergeRebase.git
+ ! [rejected]        firtBranch -> firtBranch (non-fast-forward)
+error: failed to push some refs to 'https://github.com/shravankaja/MergeRebase.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git log
+commit 6280b87f1dfee7d52a4f91b35a271fb5617d7f25 (HEAD -> firtBranch, origin/master, master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:44:21 2021 +0530
+
+     master commit c3
+
+commit aa5d8692c8c0d6a1e983dcbbfa8f301c02fcd139
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:39:27 2021 +0530
+
+     master commit c2
+
+commit ccb87c9f9d0054debddda6fc8e6b790b1bcb4467
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:38:57 2021 +0530
+
+     master commit c1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git log
+commit 6280b87f1dfee7d52a4f91b35a271fb5617d7f25 (HEAD -> firtBranch, origin/master, master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:44:21 2021 +0530
+
+     master commit c3
+
+commit aa5d8692c8c0d6a1e983dcbbfa8f301c02fcd139
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:39:27 2021 +0530
+
+     master commit c2
+
+commit ccb87c9f9d0054debddda6fc8e6b790b1bcb4467
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 15:38:57 2021 +0530
+
+     master commit c1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (firtBranch)
+$ git checkout master
+Switched to branch 'master'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git merge firtBranch
+Already up to date.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ nano hello.java
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ git merge firtBranch
+Already up to date.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/MergeRebase (master)
+$ cd ..
+
+Intel@Intel-PC MINGW64 ~/Desktop/git (master)
+$ mkdir Rebase
+
+Intel@Intel-PC MINGW64 ~/Desktop/git (master)
+$ cd Rebase
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git init
+Initialized empty Git repository in C:/Users/Intel/Desktop/git/Rebase/.git/
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git add .
+warning: LF will be replaced by CRLF in h.txt.
+The file will have its original line endings in your working directory
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git commi -m "C1"
+git: 'commi' is not a git command. See 'git --help'.
+
+The most similar commands are
+        commit
+        column
+        config
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git commit -m "C1"
+[master (root-commit) 5acbc93] C1
+ 1 file changed, 2 insertions(+)
+ create mode 100644 h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git log
+commit 5acbc93899459c8698eaa56f47a61af61315799e (HEAD -> master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:12 2021 +0530
+
+    C1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git add .
+warning: LF will be replaced by CRLF in h.txt.
+The file will have its original line endings in your working directory
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git commit -m "C2"
+[master 85599ca] C2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git log
+commit 85599cadbe5ea149303d091cdb6e815d25cbee30 (HEAD -> master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:39 2021 +0530
+
+    C2
+
+commit 5acbc93899459c8698eaa56f47a61af61315799e
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:12 2021 +0530
+
+    C1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git checkout -b branch1
+Switched to a new branch 'branch1'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git add .
+warning: LF will be replaced by CRLF in h.txt.
+The file will have its original line endings in your working directory
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git commit -m "B1"
+[branch1 e59e0f4] B1
+ 1 file changed, 1 insertion(+)
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git log
+commit e59e0f4c7621a2149ff096e554dca7be22cc9e68 (HEAD -> branch1)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:59:21 2021 +0530
+
+    B1
+
+commit 85599cadbe5ea149303d091cdb6e815d25cbee30 (master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:39 2021 +0530
+
+    C2
+
+commit 5acbc93899459c8698eaa56f47a61af61315799e
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:12 2021 +0530
+
+    C1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git add .
+warning: LF will be replaced by CRLF in h.txt.
+The file will have its original line endings in your working directory
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git commit -m "B2"
+[branch1 58beb71] B2
+ 1 file changed, 1 insertion(+)
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git checkout master
+Switched to branch 'master'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git log
+commit 85599cadbe5ea149303d091cdb6e815d25cbee30 (HEAD -> master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:39 2021 +0530
+
+    C2
+
+commit 5acbc93899459c8698eaa56f47a61af61315799e
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:12 2021 +0530
+
+    C1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git add .
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git commit -m "C2"
+[master b88a012] C2
+ 1 file changed, 1 insertion(+)
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git commit -m "C3"
+On branch master
+nothing to commit, working tree clean
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git add .
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git commit -m "C3"
+[master 85bceb2] C3
+ 1 file changed, 2 insertions(+)
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git log
+commit 85bceb2c2e64fcee32076116b42a2150da2e52a7 (HEAD -> master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 17:01:02 2021 +0530
+
+    C3
+
+commit b88a01292138c7f5176108cf7980964cd06f4b6d
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 17:00:24 2021 +0530
+
+    C2
+
+commit 85599cadbe5ea149303d091cdb6e815d25cbee30
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:39 2021 +0530
+
+    C2
+
+commit 5acbc93899459c8698eaa56f47a61af61315799e
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:12 2021 +0530
+
+    C1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git checkout branch1
+Switched to branch 'branch1'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git rebase master
+error: could not apply e59e0f4... B1
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply e59e0f4... B1
+Auto-merging h.txt
+CONFLICT (content): Merge conflict in h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1|REBASE 1/2)
+$ git rebase --continue
+h.txt: needs merge
+You must edit all merge conflicts and then
+mark them as resolved using git add
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1|REBASE 1/2)
+$ git add .
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1|REBASE 1/2)
+$ git rebase --continue
+[detached HEAD cdd1a6d] Master and featre same head
+ 1 file changed, 4 insertions(+)
+error: could not apply 58beb71... B2
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 58beb71... B2
+Auto-merging h.txt
+CONFLICT (content): Merge conflict in h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1|REBASE 2/2)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1|REBASE 2/2)
+$ git rebase --continue
+h.txt: needs merge
+You must edit all merge conflicts and then
+mark them as resolved using git add
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1|REBASE 2/2)
+$ git add .
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1|REBASE 2/2)
+$ git rebase --continue
+[detached HEAD f8f3d4d] Rebased on
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+Successfully rebased and updated refs/heads/branch1.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git log
+commit f8f3d4dcd3fc9eb785c9699487d51ee6d6261e14 (HEAD -> branch1)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:59:50 2021 +0530
+
+    Rebased on
+
+commit cdd1a6da4475395f19190358129933fe44c1c188
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:59:21 2021 +0530
+
+    Master and featre same head
+
+commit 85bceb2c2e64fcee32076116b42a2150da2e52a7 (master)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 17:01:02 2021 +0530
+
+    C3
+
+commit b88a01292138c7f5176108cf7980964cd06f4b6d
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 17:00:24 2021 +0530
+
+    C2
+
+commit 85599cadbe5ea149303d091cdb6e815d25cbee30
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:39 2021 +0530
+
+    C2
+
+commit 5acbc93899459c8698eaa56f47a61af61315799e
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:12 2021 +0530
+
+    C1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (branch1)
+$ git checkout master
+Switched to branch 'master'
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git rebase branch1
+Successfully rebased and updated refs/heads/master.
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ git log
+commit f8f3d4dcd3fc9eb785c9699487d51ee6d6261e14 (HEAD -> master, branch1)
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:59:50 2021 +0530
+
+    Rebased on
+
+commit cdd1a6da4475395f19190358129933fe44c1c188
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:59:21 2021 +0530
+
+    Master and featre same head
+
+commit 85bceb2c2e64fcee32076116b42a2150da2e52a7
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 17:01:02 2021 +0530
+
+    C3
+
+commit b88a01292138c7f5176108cf7980964cd06f4b6d
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 17:00:24 2021 +0530
+
+    C2
+
+commit 85599cadbe5ea149303d091cdb6e815d25cbee30
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:39 2021 +0530
+
+    C2
+
+commit 5acbc93899459c8698eaa56f47a61af61315799e
+Author: shravan-kaja <shravan.kaja@gmail.com>
+Date:   Sun Feb 7 16:58:12 2021 +0530
+
+    C1
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ nano h.txt
+
+Intel@Intel-PC MINGW64 ~/Desktop/git/Rebase (master)
+$ nano h.txt
